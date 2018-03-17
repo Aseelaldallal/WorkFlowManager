@@ -2,17 +2,19 @@
 
 const Hapi = require("hapi");
 const mongoose = require("./db/mongoose");
+const routes = require("./routes");
 
 const server = Hapi.server({
   port: 3000,
   host: "localhost"
 });
+server.route(routes);
 
 server.route({
   method: "GET",
-  path: "/",
+  path: "/api",
   handler: (request, h) => {
-    return "Hello, world!";
+    return "Hello api!";
   }
 });
 
